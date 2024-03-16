@@ -28,13 +28,13 @@ export default function LoginScreen({ navigation }) {
     // })
     navigation.navigate('MyProfile')
 
-    if (login) {
-      var localstorage = await UserLogin.Authenticate(login)
-      if(localstorage){
-        console.log("localstorage",localstorage)
+    // if (login) {
+    //   var localstorage = await UserLogin.Authenticate(login)
+    //   if(localstorage){
+    //     console.log("localstorage",localstorage)
 
-      }
-    }
+    //   }
+    // }
   }
 
   return (

@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, View, Text } from "react-native";
 import Menu from "../Menu";
 import Ordres from "../StackOrdres";
-import PlanPacks from '../PlanPacks'
+import Statistic from '../Statistic'
 import Settings from '../Settings'
 import { Colors } from "../../../core/theme";
 import { Badge } from 'react-native-elements';
@@ -36,13 +36,13 @@ function TabsProfiles(props) {
 
             <Tab.Screen
                 options={{
-                    title: "Plan",
+                    title: "Statistic",
                     tabBarIcon: ({ color, size }) => (
-                        <Entypo name="tablet-mobile-combo" color={color} size={size} />
+                        <Entypo name="line-graph" color={color} size={size} />
                     ),
                 }}
-                name="PlanPacks"
-                component={PlanPacks}
+                name="Statistic"
+                component={Statistic}
             />
             <Tab.Screen
                 options={{

@@ -9,6 +9,9 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@chartiful/react-native-horizontal-bar-graph": "^0.1.2",
+    "@chartiful/react-native-line-graph": "^0.1.2",
+    "@chartiful/react-native-vertical-bar-graph": "^0.1.2",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/datetimepicker": "7.2.0",
