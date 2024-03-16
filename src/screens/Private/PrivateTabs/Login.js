@@ -14,17 +14,18 @@ export default function LoginScreen({ navigation }) {
   const [password, setPassword] = useState({ value: 'azertyuiop', error: '' })
 
   const onLoginPressed = async () => {
+    alert("hheer")
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
-    if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError })
-      setPassword({ ...password, error: passwordError })
-      return
-    }
-    var login = await UserLogin.UserLoginAPI({
-      email: email.value,
-      password: password.value
-    })
+    // if (emailError || passwordError) {
+    //   setEmail({ ...email, error: emailError })
+    //   setPassword({ ...password, error: passwordError })
+    //   return
+    // }
+    // var login = await UserLogin.UserLoginAPI({
+    //   email: email.value,
+    //   password: password.value
+    // })
     navigation.navigate('MyProfile')
 
     if (login) {
