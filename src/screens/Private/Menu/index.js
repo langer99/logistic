@@ -4,12 +4,11 @@ import Icon from 'react-native-vector-icons/FontAwesome'; // You can choose a di
 import { Colors } from '../../../core/theme';
 import { UserLogin } from '../../../service';
 const menuItems = [
-  { key: '1', title: 'Home', icon: 'home', navigation: "Ordres" },
-  { key: '2', title: 'About', icon: 'info-circle', navigation: "HomeScreen" },
-  { key: '3', title: 'Services', icon: 'cogs' },
-  { key: '5', title: 'Contact', icon: 'envelope' },
-  { key: '6', title: 'My SoftSIM', icon: 'ellipsis-h' },
-  { key: '7', title: 'Log Out', icon: 'arrow-circle-right', navigation: "Login" },
+  { key: '2', title: 'Statistic', icon: 'bar-chart', navigation: "HomeScreen" },
+  { key: '3', title: 'assign', icon: 'cogs' },
+  { key: '5', title: 'Composoition', icon: 'sliders' },
+  { key: '1', title: 'view', icon: 'bullseye' },
+  { key: '1', title: 'Search', icon: 'search' },
   // Add more menu items as needed
 ];
 function MenuScreen(props) {
@@ -46,28 +45,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16,
-    backgroundColor: Colors.primary
+    // backgroundColor: Colors.primary
   },
   item: {
-    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 8,
-    padding: 16,
     margin: 8,
     elevation: 3,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
-    width: 150
+    width: 150,
+    height:100
   },
   title: {
     fontSize: 16,
     marginLeft: 10,
   },
   icon: {
-    marginRight: 10,
+    padding:15
   },
 });
 

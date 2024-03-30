@@ -1,39 +1,76 @@
-import React, { useState } from 'react'
-import { TouchableOpacity, StyleSheet, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { TouchableOpacity, StyleSheet, View ,ActivityIndicator} from 'react-native'
 import { Text } from 'react-native-paper'
 import Background from '../../components/Background'
 import Logo from '../../components/Logo'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import TextInput from '../../components/TextInput'
-import BackButton from '../../components/BackButton'
+import { useDispatch } from 'react-redux';
 import { theme } from '../../core/theme'
 import { emailValidator } from '../../helpers/emailValidator'
 import { passwordValidator } from '../../helpers/passwordValidator'
-
+import { UserLogin } from '../../service'
+import { setUserInfo } from '../../store/user/action';
 export default function LoginScreen({ navigation }) {
-  const [email, setEmail] = useState({ value: '', error: '' })
-  const [password, setPassword] = useState({ value: '', error: '' })
+  const [email, setEmail] = useState({ value: 'adminA', error: '' })
+  const [password, setPassword] = useState({ value: 'adminA', error: '' })
+  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  const onLoginPressed = () => {
+  const onLoginPressed = async () => {
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
-    // if (emailError || passwordError) {
-    //   setEmail({ ...email, error: emailError })
-    //   setPassword({ ...password, error: passwordError })
-    //   return
-    // }
-    navigation.reset({
-      index: 0,
-      routes: [{ name: 'TabPublic' }],
+    if (emailError || passwordError) {
+      setEmail({ ...email, error: emailError })
+      setPassword({ ...password, error: passwordError })
+      return
+    }
+    var login = await UserLogin.UserLoginAPI({
+      email: email.value,
+      password: password.value
     })
+    if (login) {
+      dispatch(setUserInfo(login.user));
+      var localstorage = await UserLogin.Authenticate(login)
+      if (localstorage) {
+        console.log("localstorage", localstorage)
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'TabPublic' }],
+        })
+
+      }
+    }
+
+  }
+  useEffect(() => {
+    GetStorageLocal()
+  }, [])
+  const GetStorageLocal = async () => {
+    try {
+      const storage = await UserLogin.GetStorage()
+      if (storage) {
+        dispatch(setUserInfo(JSON.parse(storage)?.user))
+        setIsLoading(false)
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'TabPublic' }],
+        })
+      } else {
+        setIsLoading(false)
+      }
+    } catch (error) {
+      setIsLoading(false)
+      console.log(error)
+
+    }
   }
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <Logo />
-      <Header>APP.</Header>
+      <Header>IOT APP</Header>
       <TextInput
         label="Email"
         returnKeyType="next"
@@ -62,14 +99,16 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.forgot}>Forgot your password ?</Text>
         </TouchableOpacity>
       </View>
-      <Button mode="contained" onPress={onLoginPressed}>
+      {isLoading ? (
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : (<Button mode="contained" onPress={onLoginPressed}>
         Log in
-      </Button>
+      </Button>)}
       <View style={styles.row}>
-        <Text>You do not have an account yet ?</Text> 
+        <Text>You do not have an account yet ?</Text>
       </View>
       <View style={styles.row}>
-      <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
+        <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
           <Text style={styles.link}>Create !</Text>
         </TouchableOpacity>
       </View>

@@ -1,22 +1,21 @@
-// store/actions/index.js
+// store/actions/userActions.js
 
- 
-  export const setUserRulesData = (data) => {
-    return {
-      type: 'SET_USER_DATA',
-      payload: data,
-    };
+export const setUserInfo = (userInfo) => {
+  return {
+    type: 'SET_USER_INFO',
+    payload: { userInfo },
   };
-  export const setUserData = (data) => {
-    return {
-      type: 'SET_USER_INFO',
-      payload: data,
-    };
+};
+
+export const updateUserInfo = (updatedInfo) => {
+  return {
+    type: 'UPDATE_USER_INFO',
+    payload: { updatedInfo },
   };
-  export const setUserALLDATa = (data) => {
-    return {
-      type: 'SET_USER_All_Data',
-      payload: data,
-    };
+};
+
+export const clearUserInfo = () => {
+  return {
+    type: 'CLEAR_USER_INFO',
   };
-  
+};

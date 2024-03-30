@@ -1,5 +1,6 @@
 import * as React from "react";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { Feather, AntDesign, Entypo,FontAwesome5 } from '@expo/vector-icons';
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
 import HomeScreen from "./Home";
@@ -19,7 +20,7 @@ const TabPublic = () => {
       screenOptions={{
         headerTitleStyle: styles.headerTitleStyle,
         tabBarActiveTintColor: Colors.info,
-        tabBarInactiveTintColor: Colors.secondary,
+        tabBarInactiveTintColor: Colors.gray,
         tabBarStyle: { backgroundColor: Colors.white },
         headerStyle: styles.headerStyle,
       }}>
@@ -37,8 +38,8 @@ const TabPublic = () => {
         options={{
           title: "Sensors",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="store" color={color} size={size} />
-          ),
+            <Entypo name="signal" size={size} color={color} />
+            ),
         }}
         name="Sensors"
         component={Sensors}
@@ -47,8 +48,8 @@ const TabPublic = () => {
         options={{
           title: "Gateways",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="grip-horizontal" color={color} size={size} />
-          ),
+            <AntDesign name="USB" size={size} color={color} />
+            ),
         }}
         name="Gateways"
         component={Gateways}
@@ -63,16 +64,7 @@ const TabPublic = () => {
         name="About"
         component={About}
       />
-      <Tab.Screen
-        options={{
-          title: "Help",
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="info-circle" color={color} size={size} />
-          ),
-        }}
-        name="Help"
-        component={Help}
-      />
+    
       <Tab.Screen
         options={{
           title: "Profil",
@@ -82,6 +74,16 @@ const TabPublic = () => {
         }}
         name="TabPrivate"
         component={TabPrivate}
+      />
+        <Tab.Screen
+        options={{
+          title: "Help",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome5 name="info-circle" color={color} size={size} />
+          ),
+        }}
+        name="Help"
+        component={Help}
       />
     </Tab.Navigator>
   );

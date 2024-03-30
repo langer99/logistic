@@ -1,32 +1,37 @@
-// store/reducers/UserInfoReducer.js
+// userReducers.js
+const SET_USER_INFO = 'SET_USER_INFO';
+const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
+const CLEAR_USER_INFO = 'CLEAR_USER_INFO';
 
 const initialState = {
-  userData: [],
-  userInfo: {},
-  allData: {}
+  userInfo: {}, // User information object
 };
 
-const UserInfoReducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_USER_DATA':
-      return {
-        ...state,
-        userData: action.payload,
-      };
-    case 'SET_USER_INFO':
-      return {
-        ...state,
-        userInfo: action.payload,
-      };
-    case 'SET_USER_All_Data':
-      return {
-        ...state,
-        allData: action.payload,
-      };
-
+    case SET_USER_INFO:
+      return setUserInfo(state, action.payload);
+    case UPDATE_USER_INFO:
+      return updateUserInfo(state, action.payload);
+    case CLEAR_USER_INFO:
+      return clearUserInfo();
     default:
       return state;
   }
 };
 
-export default UserInfoReducer;
+const setUserInfo = (state, payload) => {
+  const { userInfo } = payload;
+  return { ...state, userInfo: { ...userInfo } };
+};
+
+const updateUserInfo = (state, payload) => {
+  const { updatedInfo } = payload;
+  return { ...state, userInfo: { ...state.userInfo, ...updatedInfo } };
+};
+
+const clearUserInfo = () => {
+  return { userInfo: {} };
+};
+
+export default userReducer;

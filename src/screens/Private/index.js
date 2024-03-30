@@ -12,7 +12,7 @@ const TabPrivate = () => {
   return (
     <Stack.Navigator
       id="TabPrivate"
-      initialRouteName="Login"
+      initialRouteName="MyProfile"
       screenOptions={{
         headerTitleStyle: styles.headerTitleStyle,
         headerShown: false,

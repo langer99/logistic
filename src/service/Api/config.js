@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.28:3009/mobile";
+const API_URL = "http://192.168.100.82:8009";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/api/root/login`,

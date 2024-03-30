@@ -8,6 +8,7 @@ const showToast = message => {
 };
 const UserLoginAPI = async (data) => {
     try {
+        console.log(Apis.UserLoginAPI)
         let result = await api.post(Apis.UserLoginAPI, data, {
             withCredentials: false,
             headers: {
@@ -30,17 +31,18 @@ const UserLoginAPI = async (data) => {
 
 const Authenticate = async (data) => {
     try {
+        console.log(data)
         await AsyncStorage.setItem('@Token_jwt', data.token)
         // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
-        await AsyncStorage.setItem('@refresh_token', data.token)
+        await AsyncStorage.setItem('@refresh_token', JSON.stringify(data))
         return true
     } catch (error) {
         return (error)
     }
 };
 const Logout = async (data) => {
-    console.log("Authenticate",data.token)
     try {
+        console.log("dataLogout")
         await AsyncStorage.removeItem('@Token_jwt')
         await AsyncStorage.removeItem('@refresh_token')
         return true
@@ -48,9 +50,33 @@ const Logout = async (data) => {
         return (error)
     }
 };
+const GetStorage = async (data) => {
+    try {
+        var Token_jwt = await AsyncStorage.getItem('@refresh_token')
+        // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
+        // await AsyncStorage.setItem('@refresh_token', data.token)
+
+        return Token_jwt
+    } catch (error) {
+        return (error)
+    }
+};
+const GetStorageUserInfo = async (data) => {
+    try {
+        var Token_jwt = await AsyncStorage.getItem('@refresh_token')
+        // await  AsyncStorage.setItem('@user_Info', JSON.stringify(data))
+        // await AsyncStorage.setItem('@refresh_token', data.token)
+
+        return Token_jwt
+    } catch (error) {
+        return (error)
+    }
+};
 const LoginService = {
     UserLoginAPI,
+    GetStorage,
     Authenticate,
+    GetStorageUserInfo,
     Logout
 };
 export default LoginService
