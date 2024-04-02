@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Feather, AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons, AntDesign, Entypo, FontAwesome5 } from '@expo/vector-icons';
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet } from "react-native";
@@ -31,7 +31,7 @@ const TabPublic = () => {
         options={{
           title: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="home" color={color} size={size} />
+            <Entypo name="home" color={color} size={size*0.9} />
           ),
         }}
         name="HomeScreen"
@@ -41,7 +41,7 @@ const TabPublic = () => {
         options={{
           title: "Sensors",
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="signal" size={size} color={color} />
+            <Entypo name="signal" size={size*0.9} color={color} />
           ),
         }}
         name="Sensors"
@@ -61,7 +61,7 @@ const TabPublic = () => {
         options={{
           title: "Compose Assign",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="cogs" color={color} size={size} />
+            <FontAwesome5 name="cogs" color={color} size={size*0.8} />
           ),
         }}
         name="ComposeAndAssign"
@@ -71,7 +71,7 @@ const TabPublic = () => {
         options={{
           title: "View",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="file" color={color} size={size} />
+            <FontAwesome5 name="file" color={color} size={size*0.8} />
           ),
         }}
         name="ViewAssignCompose"
@@ -94,24 +94,15 @@ const TabPublic = () => {
 
       <Tab.Screen
         options={{
-          title: "Profil",
+          title: "View Data",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="user-alt" color={color} size={size} />
+            <MaterialCommunityIcons name="view-quilt-outline" color={color} size={size} />
           ),
         }}
         name="TabPrivate"
         component={TabPrivate}
       />
-      <Tab.Screen
-        options={{
-          title: "Help",
-          tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="info-circle" color={color} size={size} />
-          ),
-        }}
-        name="Help"
-        component={Help}
-      />
+   
     </Tab.Navigator>
   );
 }

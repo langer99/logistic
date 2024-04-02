@@ -5,7 +5,7 @@ import { StyleSheet, View, Text } from "react-native";
 import Menu from "../Menu";
 import Ordres from "../StackOrdres";
 import Statistic from '../Statistic'
-import Settings from '../Settings'
+import Notifications from '../notifications'
 import { Colors } from "../../../core/theme";
 import { Badge } from 'react-native-elements';
 import { useSelector } from "react-redux";
@@ -56,13 +56,13 @@ function TabsProfiles(props) {
             />
             <Tab.Screen
                 options={{
-                    title: "Settings",
+                    title: "Notifications",
                     tabBarIcon: ({ color, size }) => (
-                        <FontAwesome5 name="file" color={color} size={size} />
+                        <Entypo name="notification" color={color} size={size} />
                     ),
                 }}
-                name="Settings"
-                component={Settings}
+                name="Notifications"
+                component={Notifications}
             />
             <Tab.Screen
                 options={{
