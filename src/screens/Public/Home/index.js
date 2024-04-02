@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 function Menu(props) {
   const UserInfoReducer = useSelector((state) => state.UserInfoReducer?.userInfo);
   const menuItems = [
-    { key: '2', title: 'Help', icon: 'info-circle', navigation: "Help" },
+    { key: '2', title: 'Help', icon: 'info-circle', navigation: "Info" },
     { key: '3', title: 'settings', icon: 'cogs', navigation: "ComposeAndAssign" },
     { key: '4', title: 'View', icon: 'eye', navigation: "ViewAssignCompose" },
     { key: '4', title: 'Sensors', icon: 'wifi', navigation: "Sensors" },

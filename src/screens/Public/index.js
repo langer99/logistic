@@ -11,6 +11,7 @@ import Help from './Help';
 import Sensors from './Sensors';
 import ComposeAndAssign from './ComposeAndAssign'
 import ViewAssignCompose from './ViewAssignCompose'
+import Info from './InfoSensors'
 import { Colors } from "../../core/theme";
 
 const Tab = createBottomTabNavigator();
@@ -76,6 +77,8 @@ const TabPublic = () => {
         name="ViewAssignCompose"
         component={ViewAssignCompose}
       />
+   
+
       {/* <Tab.Screen
         options={{
           title: "About",
