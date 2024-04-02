@@ -6,7 +6,6 @@ import Logo from '../../components/Logo'
 import Header from '../../components/Header'
 import Button from '../../components/Button'
 import TextInput from '../../components/TextInput'
-import BackButton from '../../components/BackButton'
 import { theme } from '../../core/theme'
 import { emailValidator } from '../../helpers/emailValidator'
 import { passwordValidator } from '../../helpers/passwordValidator'
@@ -35,7 +34,6 @@ export default function RegisterScreen({ navigation }) {
 
   return (
     <Background>
-      <BackButton goBack={navigation.goBack} />
       <Logo />
       <Header>Welcome.</Header>
       <TextInput

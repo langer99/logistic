@@ -1,4 +1,7 @@
 export { default as UserLogin } from "./login";
+export { default as settingsSensors } from "./settings.sensors";
+export { default as settingsGateways } from "./settings.gateways";
+export { default as settingsOrders } from "./settings.orders";
 
 
 

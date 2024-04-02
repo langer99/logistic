@@ -33,7 +33,7 @@ function TabsProfiles(props) {
                 name="Menu"
                 component={Menu}
             />
-
+        
             <Tab.Screen
                 options={{
                     title: "Statistic",

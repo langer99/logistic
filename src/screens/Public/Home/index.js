@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Colors } from '../../../core/theme';
@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux';
 function Menu(props) {
   const UserInfoReducer = useSelector((state) => state.UserInfoReducer?.userInfo);
   const menuItems = [
-    { key: '1', title: 'Home', icon: 'home', navigation: "HomeScreen" },
-    { key: '2', title: 'About', icon: 'info-circle', navigation: "About" },
-    { key: '3', title: 'settings', icon: 'cogs' },
-    { key: '4', title: 'Sensors', icon: 'wifi', navigation: "MyCart" },
-    { key: '5', title: 'GW', icon: 'wifi', navigation: "mysofstim" },
+    { key: '2', title: 'Help', icon: 'info-circle', navigation: "Help" },
+    { key: '3', title: 'settings', icon: 'cogs', navigation: "ComposeAndAssign" },
+    { key: '4', title: 'View', icon: 'eye', navigation: "ViewAssignCompose" },
+    { key: '4', title: 'Sensors', icon: 'wifi', navigation: "Sensors" },
+    { key: '5', title: 'GW', icon: 'usb', navigation: "Gateways" },
     { key: '6', title: 'Log Out', icon: 'arrow-circle-right', navigation: "LoginScreen" },
     // Add more menu items as needed
   ];
@@ -58,9 +58,9 @@ function Menu(props) {
               <FontAwesome5 name="pen" color={Colors.primary} size={20} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.nameCustomer}>{UserInfoReducer.email}</Text>
-          <Text style={styles.CinCustomer}>{UserInfoReducer.last_name}</Text>
-          <Text style={styles.CinCustomer}>{UserInfoReducer.cin}</Text>
+          <Text style={styles.nameCustomer}>{UserInfoReducer.firstname} firstanem</Text>
+          <Text style={styles.CinCustomer}>{UserInfoReducer.username}</Text>
+          <Text style={styles.CinCustomer}>{UserInfoReducer.cin} email</Text>
 
         </View>
       </View>

@@ -4,26 +4,27 @@ export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    text: '#1e212b',
+    text: '#0F2167',
     primary: '#181D50',
-    secondary: '#1746A2',
+    secondary: '#3559E0',
     error: '#c2061c',
-    backgroundColor: "#49bdeb"
+    backgroundColor: "#4CB9E7"
 
   },
 }
 export const Colors = {
 
-  primary: "#181D50",
-  secondary: "#1746A2",
-  info: "#49bdeb",
+  primary: "#0F2167",
+  secondary: "#3559E0",
+  info: "#4CB9E7",
   light: "#eaeaf6",
   white: "#f4f4f9",
   black: "#3c3c3d",
   gray: "#95a5a6",
   text: "#ED1C24",
   error: '#e03f52',
-  backgroundColor: "#49bdeb"
+  backgroundColor: "#4CB9E7",
+  colorTiers:"#FFECD6"
 }
 export const SIZES = {
   // global sizes
