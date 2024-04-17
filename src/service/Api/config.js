@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.28:8009";
+const API_URL = "http://192.168.1.222:8009";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/api/root/login`,

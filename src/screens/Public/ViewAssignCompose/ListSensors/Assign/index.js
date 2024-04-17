@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, FlatList, StyleSheet, Dimensions, View, Text, TouchableOpacity } from "react-native";
-import Category from '../../../../components/RenderComponent/Category'
-import { Colors } from "../../../../core/theme";
-import { settingsGateways, settingsOrders } from '../../../../service';
-import { FontAwesome5 } from '@expo/vector-icons';
-import OrdersC from "../../../Private/StackOrdres/OrdersC";
+import Category from '../../../../../components/RenderComponent/Category'
+import { Colors } from "../../../../../core/theme";
+import { settingsGateways, settingsOrders } from '../../../../../service';
+import OrdersC from "../../../../Private/StackOrdres/OrdersC";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;

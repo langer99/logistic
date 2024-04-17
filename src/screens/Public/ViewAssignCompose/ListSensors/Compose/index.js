@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, FlatList, StyleSheet, Dimensions, View, Text, TouchableOpacity } from "react-native";
-import Category from '../../../../components/RenderComponent/Category'
-import { Colors } from "../../../../core/theme";
-import { settingsGateways, settingsSensors } from '../../../../service';
-import { FontAwesome5 } from '@expo/vector-icons';
-import SensorsC from "../../../Public/Sensors/Sensor";
-
+import Category from '../../../../../components/RenderComponent/Category'
+import { Colors } from "../../../../../core/theme";
+import { settingsGateways, settingsSensors } from '../../../../../service';
+import SensorsC from "../../../../Public/Sensors/Sensor";
+import { useDispatch } from 'react-redux';
+import { updatesensor } from "../../../../../store/sensors/actions";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 function ListCategories(props) {
+    const dispatch = useDispatch();
     const [ListSensors, setListSensors] = useState([]);
     const [List, setList] = useState([]);
     const [isSelected, setisSelected] = useState("");
@@ -60,9 +61,15 @@ function ListCategories(props) {
         console.log("heeer");
     }, []);
 
+    const selectSensorView = async (sensor) => {
+
+        dispatch(updatesensor(sensor));
+        props.navigation.navigate("ViewSensors")
+    }
+
     return (
         <View style={styles.container}>
-           
+
             <View style={styles.categoryContainer}>
                 <FlatList
                     data={List}
@@ -70,7 +77,7 @@ function ListCategories(props) {
                     keyExtractor={item => item.id}
                     horizontal={true}
                 />
-             
+
             </View>
             <ScrollView contentContainerStyle={styles.scrollViewContent}>
                 <View style={styles.planPackContainer}>
@@ -79,7 +86,7 @@ function ListCategories(props) {
                         keyExtractor={item => item.id}
                         ListEmptyComponent={empty()}
                         renderItem={({ item }) =>
-                            <SensorsC item={item} onSelect={() => handleItemSelection(item)} isSelected={selectedItems.includes(item)} />}
+                            <SensorsC item={item} onSelect={(item) => selectSensorView(item)} isSelected={selectedItems.includes(item)} />}
                     />
                 </View>
             </ScrollView>
@@ -97,7 +104,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: Colors.light,
         margin: 10,
-        marginTop:70,
+        marginTop: 70,
         borderRadius: 20,
         right: 0,
         bottom: -40,
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
         width: windowWidth,
         paddingHorizontal: 16,
         paddingTop: 16,
-        marginBottom:30,
+        marginBottom: 30,
     },
     scrollViewContent: {
         flexGrow: 1,

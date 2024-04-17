@@ -1,63 +1,56 @@
-import * as React from "react";
-import { Feather, AntDesign, Entypo,FontAwesome5 } from '@expo/vector-icons';
-
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import ViewSensors from './ViewSensors';
+import ListSensors from './ListSensors';
 import { StyleSheet } from "react-native";
-import Assign from "./Assign";
-import Compose from "./Compose";
 import { Colors } from "../../../core/theme";
 
-const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
-const ComposeAndAssign = () => {
+const TabPrivate = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Compose"
+    <Stack.Navigator
+      id="ListSensorsN"
+      initialRouteName="ListSensors"
       screenOptions={{
         headerTitleStyle: styles.headerTitleStyle,
-        tabBarActiveTintColor: Colors.info,
-        tabBarInactiveTintColor: Colors.secondary,
-        tabBarStyle: { backgroundColor: Colors.white },
-        headerStyle: styles.headerStyle,
         headerShown: false,
+        headerBackVisible: false
 
-      }}>
-      <Tab.Screen
+      }}
+    >
+
+      <Stack.Screen
+        name="ListSensors"
+        component={ListSensors}
         options={{
-          title: "Compose",
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="lastfm" color={color} size={size} />
-          ),
+          title: "Create account",
+          headerTitleStyle: styles.headerTitleStyle,
         }}
-        name="Compose"
-        component={Compose}
       />
-      <Tab.Screen
+      <Stack.Screen
+        name="ViewSensors"
+        component={ViewSensors}
         options={{
-          title: "Assign",
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="flow-tree" size={size} color={color} />
-            ),
+          title: "ViewSensors",
+          headerTitleStyle: styles.headerTitleStyle,
+          headerShown: true,
+          headerBackVisible: true
         }}
-        name="Assign"
-        component={Assign}
+
       />
- 
-    </Tab.Navigator>
+    </Stack.Navigator>
   );
-}
+};
 
 const styles = StyleSheet.create({
   headerTitleStyle: {
     textAlign: "left",
   },
   logout: {
-    color: Colors.primary,
+    color: Colors,
     textAlign: "left",
-  },
-  headerStyle: {
-    backgroundColor: Colors.accent,
   },
 });
 
-export default ComposeAndAssign;
+export default TabPrivate;
