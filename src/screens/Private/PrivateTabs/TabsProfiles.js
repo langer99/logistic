@@ -6,6 +6,7 @@ import Menu from "../Menu";
 import Ordres from "../StackOrdres";
 import Statistic from '../Statistic'
 import Notifications from '../notifications'
+import ConfigGatewayBLE from '../config'
 import { Colors } from "../../../core/theme";
 import { Badge } from 'react-native-elements';
 import { useSelector } from "react-redux";
@@ -33,7 +34,7 @@ function TabsProfiles(props) {
                 name="Menu"
                 component={Menu}
             />
-        
+
             <Tab.Screen
                 options={{
                     title: "Statistic",
@@ -44,6 +45,17 @@ function TabsProfiles(props) {
                 name="Statistic"
                 component={Statistic}
             />
+            <Tab.Screen
+                options={{
+                    title: "config GW",
+                    tabBarIcon: ({ color, size }) => (
+                        <Entypo name="line-graph" color={color} size={size} />
+                    ),
+                }}
+                name="ConfigGatewayBLE"
+                component={ConfigGatewayBLE}
+            />
+
             <Tab.Screen
                 options={{
                     title: "Ordres",
