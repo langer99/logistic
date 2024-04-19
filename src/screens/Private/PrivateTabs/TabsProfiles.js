@@ -49,7 +49,7 @@ function TabsProfiles(props) {
                 options={{
                     title: "config GW",
                     tabBarIcon: ({ color, size }) => (
-                        <Entypo name="line-graph" color={color} size={size} />
+                        <Entypo name="publish" color={color} size={size} />
                     ),
                 }}
                 name="ConfigGatewayBLE"
