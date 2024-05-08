@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.28:8009";
+const API_URL = "http://192.168.0.6:8009";
 
 const Apis = {
   UserLoginAPI: `${API_URL}/api/root/login`,
@@ -7,6 +7,7 @@ const Apis = {
   api_Sensor: `${API_URL}/api/sensors/list/`,
   api_Gateway: `${API_URL}/api/gateways/list/`,
   api_Order: `${API_URL}/api/orders/index/`,
+  api_DataCollected: `${API_URL}/api/data/collect/from/sensors/`,
 
   
 
