@@ -9,7 +9,7 @@ const { width } = Dimensions.get('window');
 
 const SensorsC = ({ item , onSelect ,isSelected }) => {
  
-    const toggleColor = item.status === 'Active' ? '#00ff00' : '#ff0000';
+    const toggleColor = item.location === 'TDY' ? '#00FF00' : '#ff0000';
 
     return (
         <TouchableOpacity style={{...styles.cardContainer,backgroundColor:isSelected?Colors.gray:"#ffffff"}} onPress={() => onSelect(item)}>
@@ -21,7 +21,7 @@ const SensorsC = ({ item , onSelect ,isSelected }) => {
                 </View>
                 <View style={styles.rightContent}>
                 <View style={styles.rightContent}>
-                    <Text style={styles.status}>{item.status} </Text>
+                    <Text style={styles.status}>{item.location === 'TDY'? "active":"inactive"} </Text>
                 </View>
                     <View style={[styles.statusIndicator, { backgroundColor: toggleColor }]} />
                 </View>

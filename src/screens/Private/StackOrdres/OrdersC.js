@@ -8,7 +8,7 @@ const { width } = Dimensions.get('window');
 
 
 const SensorsC = ({ item, onSelect, isSelected }) => {
-  let categoryColor = Colors.black;
+  let categoryColor = "#5511AE";
 
   const toggleColor = item.status === 'Error' ? '#00ff00' : '#ff0000';
 
@@ -18,10 +18,10 @@ const SensorsC = ({ item, onSelect, isSelected }) => {
         <View style={styles.leftContent}>
           <Text style={styles.itemName}>{item.ref} {item.ref}
           </Text>
-          <Text style={[styles.category, { color: categoryColor }]}>{item.note}</Text>
+          <Text style={[styles.category, { color: categoryColor }]}>{item.description}</Text>
         </View>
         <View style={styles.rightContent}>
-          <Text style={styles.status}>{item.status}</Text>
+          <Text style={styles.status}>{item.categorie}</Text>
           <Text style={styles.status}>{item.status}</Text>
         </View>
       </View>
@@ -48,9 +48,9 @@ const styles = {
     alignItems: 'flex-end',
   },
   itemName: {
-    fontSize: 22,
-    fontWeight: '200',
-    color: '#808080',
+    fontSize: 15,
+    fontWeight: '400',
+    color: '#00133A',
   },
   category: {
     alignItems: 'flex-end',

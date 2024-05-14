@@ -68,7 +68,7 @@ const styles = {
   container: {
     flex: 1,
     flexDirection: 'row',
-    borderColor: "#FFAAFF",
+    borderColor: "#001422",
     borderWidth: 3,
     borderRadius: 5,
   },

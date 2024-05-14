@@ -58,9 +58,9 @@ function Menu(props) {
               <FontAwesome5 name="pen" color={Colors.primary} size={20} />
             </TouchableOpacity>
           </View>
-          <Text style={styles.nameCustomer}>{UserInfoReducer.firstname} firstanem</Text>
+          <Text style={styles.nameCustomer}>{UserInfoReducer.firstname} User</Text>
           <Text style={styles.CinCustomer}>{UserInfoReducer.username}</Text>
-          <Text style={styles.CinCustomer}>{UserInfoReducer.cin} email</Text>
+          <Text style={styles.CinCustomer}>{UserInfoReducer.email} email@itelab.com</Text>
 
         </View>
       </View>

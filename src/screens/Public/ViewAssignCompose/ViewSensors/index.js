@@ -36,7 +36,7 @@ function App() {
       <View>
         <RadioGroup
           selectedIndex={tabIndex}
-          items={["waiting", "Done"]}
+          items={["Liste Data", "View"]}
           onChange={(e) => settabIndex(e)}
         />
       </View>
@@ -60,7 +60,7 @@ function App() {
                 hasXAxisBackgroundLines: false,
                 xAxisLabelStyle: {
                   position: 'right',
-                  prefix: 'U'
+                  prefix: 'C'
                 }
               }}
               style={styles.graph}
@@ -77,11 +77,12 @@ function App() {
               lineWidth={3}
               isBezier
               hasDots={true}
+              
               baseConfig={{
                 startAtZero: false,
                 hasXAxisBackgroundLines: false,
                 xAxisLabelStyle: {
-                  prefix: '$',
+                  prefix: '',
                   offset: 0
                 }
               }}
