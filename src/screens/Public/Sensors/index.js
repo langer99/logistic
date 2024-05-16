@@ -1,45 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Dimensions, FlatList,  TextInput,  } from 'react-native';
+import { View, Text, Dimensions, FlatList, TextInput } from 'react-native';
 import { settingsSensors } from '../../../service';
 import SensorsC from './Sensor';
+
 const { width } = Dimensions.get('window');
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [List, setList] = useState([]);
+  const [sensors, setSensors] = useState([]);
+  const [filteredSensors, setFilteredSensors] = useState([]);
+
   const fetchSensors = async () => {
     try {
-      const list = await settingsSensors.getSensor();
-      if (list) {
-        setList(list?.data);
+      const response = await settingsSensors.getSensor();
+      if (response.data) {
+        setSensors(response.data);
+        setFilteredSensors(response.data);
       }
     } catch (error) {
-      console.error('Error fetching admin list:', error);
+      console.error('Error fetching sensor list:', error);
     }
   };
+
   useEffect(() => {
     fetchSensors();
   }, []);
-  // Logic for filtering data based on search term
+
+  useEffect(() => {
+    // Filter sensors based on search term
+    const filtered = sensors.filter(sensor =>
+      sensor.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredSensors(filtered);
+  }, [searchTerm, sensors]);
 
   return (
     <View style={styles.container}>
       <HeaderView setSearchTerm={setSearchTerm} />
-      <FlatListView filteredData={List} />
+      <FlatListView filteredData={filteredSensors} />
     </View>
   );
-};
+}
 
 // HeaderView Component
 const HeaderView = ({ setSearchTerm }) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerText}>Sensors</Text>
       <TextInput
         style={styles.searchInput}
         placeholder="Search..."
         onChangeText={text => setSearchTerm(text)}
-        value={""}
       />
     </View>
   );
@@ -58,8 +68,6 @@ const FlatListView = ({ filteredData }) => {
 };
 
 // Card Component
-// Card Component
-
 
 // Styles
 const styles = {
@@ -111,8 +119,6 @@ const styles = {
     marginHorizontal: 15,
   },
   ///////////////card content
-  
 };
 
 export default App;
-
